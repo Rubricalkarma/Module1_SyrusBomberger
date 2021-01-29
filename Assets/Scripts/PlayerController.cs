@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Text countText;
     public Text winText;
+    public AudioSource grenade;
 
     private Rigidbody rb;
     private int count;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winText.text = "";
+        grenade = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
             SetCountText();
+            grenade.Play();
         }
     }
 
